@@ -1,0 +1,20 @@
+.editArticle {
+    position: relative;
+}
+
+.editArticle .sidebar {
+    width: 250px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-right: 1px solid #ddd;
+}
+
+.nav-item {
+    color: red;
+}
+
+.tabsClass {
+    background-color: red;
+    color: red;
+}

@@ -1,0 +1,11 @@
+header {
+    height: 80px;
+    line-height: 80px;
+    font-size: 18px;
+    padding: 0 40px;
+    position: fixed;
+    box-shadow: -3px 0 10px #ccc;
+    width: 100%;
+}
+
+header .blogger_name {}
