@@ -1,9 +1,8 @@
-<div class="editArticle">
-    <div class="sidebar">
-        <tabset [justified]="true">
-            <tab heading="Static title" customClass="tabsClass">Static content</tab>
-            <tab heading="Static Title 1">Static content 1</tab>
-        </tabset>
+<div class="editArticle clearfix">
+    <div class="sidebar clearfix">
+        <textarea name="" [(ngModel)]="articleContent" (keydown)="textareaAllowTab($event)"></textarea>
     </div>
-    <div></div>
+    <div class="markdownContent">
+        <markdown [data]="articleContent"></markdown>
+    </div>
 </div>

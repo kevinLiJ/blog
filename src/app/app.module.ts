@@ -5,6 +5,7 @@ import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import * as ngxBootstrap from 'ngx-bootstrap';
+import { MarkdownModule } from 'angular2-markdown';
 
 import { rootRouterConfig } from './app.routes';
 
@@ -29,7 +30,8 @@ let rootRouterModule:ModuleWithProviders = RouterModule.forRoot(rootRouterConfig
     rootRouterModule,
     FormsModule,
     ReactiveFormsModule,
-    ngxBootstrap.TabsModule .forRoot()
+    ngxBootstrap.TabsModule .forRoot(),
+    MarkdownModule.forRoot()
   ],
   providers: [ContactService],
   bootstrap: [AppComponent]
