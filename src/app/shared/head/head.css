@@ -6,6 +6,56 @@ header {
     position: fixed;
     box-shadow: -3px 0 10px #ccc;
     width: 100%;
+    z-index: 99;
+    background-color: #C0C095;
+    color: #fff;
 }
 
-header .blogger_name {}
+header .user img {
+    width: 40px;
+    border-radius: 20px;
+    /* margin-top: 20px; */
+    margin-right: 4px;
+}
+
+header .title {
+    cursor: pointer;
+}
+
+
+/* header .loginBtn {
+    padding: 0 20px;
+    cursor: pointer;
+} */
+
+header .glyphicon-log-in,
+header .glyphicon-log-out,
+header .glyphicon-plus {
+    top: 3px;
+    padding: 0 7px;
+    cursor: pointer;
+}
+
+.blogger_name {
+    padding-right: 20px;
+}
+
+.login {
+    background-color: #EDEDCE;
+    padding: 40px 20px 10px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.login .form-group {
+    text-align: left;
+}
+
+.login .form-group label {
+    font-weight: 700;
+}
+
+.login .form-group input {
+    height: 30px;
+    line-height: 30px;
+}

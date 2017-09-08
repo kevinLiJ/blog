@@ -13,15 +13,43 @@
     box-shadow: 0 5px 10px #ccc;
 }
 
+.editArticle .sidebar .optionsBox {
+    /* position: absolute;
+    top: 0;
+    left: 0; */
+    /* width: 100%; */
+    background-color: #ADAAAA;
+    color: #6D6B6B;
+    line-height: 40px;
+}
+
 .editArticle .sidebar .sidebarTit {
     font-size: 16px;
     text-align: center;
     line-height: 70px;
 }
 
+.editArticle .sidebar .optionsBox span {
+    color: #fff;
+    padding: 5px 20px;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.editArticle input {
+    height: 55px;
+    line-height: 55px;
+    font-size: 20px;
+    width: 100%;
+    overflow: hidden;
+    border: none;
+    background-color: #F6F1F1;
+    padding: 0 40px;
+}
+
 .editArticle textarea {
     width: 100%;
-    height: 100%;
+    min-height: 100%;
     border: none;
     background-color: #F6F1F1;
     padding: 40px;

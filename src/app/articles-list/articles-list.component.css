@@ -1,0 +1,31 @@
+.articleList {
+    width: 700px;
+    margin: 0 auto;
+    box-shadow: 3px 3px 6px #ccc;
+    /* height: 99%; */
+    border-radius: 10px;
+    /* overflow-y: auto; */
+    z-index: 1;
+}
+
+.articleList .articleInfo {
+    padding: 25px 15px;
+    border-bottom: 1px solid #D6D695;
+    cursor: pointer;
+}
+
+.articleList .articleInfo .title {
+    height: 30px;
+    line-height: 30px;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.articleList .articleInfo .briefInfo {
+    margin-top: 10px;
+    text-indent: 15px;
+}
+
+.articleList .articleInfo .otherInfo {
+    margin-top: 10px;
+}

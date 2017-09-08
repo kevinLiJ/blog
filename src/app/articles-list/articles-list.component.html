@@ -1,0 +1,11 @@
+<div class="articleList">
+    <div class="articleInfo" *ngFor="let article of articles" [routerLink]="['/article/' + article.id]">
+        <div class="title">{{article.title}}</div>
+        <!-- <div class="briefInfo">{{article.content}}</div> -->
+        <div class="otherInfo">
+            <span class="left">{{article.creat_time}}</span>
+            <span class="right"></span>
+        </div>
+    </div>
+    <pagination *ngIf="totalItems > articlesNumPerPage" [itemsPerPage]="articlesNumPerPage" [directionLinks]="false" [boundaryLinks]="true" [totalItems]="totalItems" (pageChanged)="pageChanged($event)"></pagination>
+</div>

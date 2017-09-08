@@ -1,33 +1,38 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Router  } from '@angular/router';
 import { timeFormatter } from '../shared/util';
-import { ActivatedRoute, Router  } from '@angular/router';
 import { ArticlesService } from '../shared/service/articles.service';
 import { LoginStatusService } from '../shared/service/loginStatus.service';
 
 @Component({
-  selector: 'edit-article',
-  styleUrls:['./editArticle.component.css'],
-  templateUrl: './editArticle.component.html'
+  selector: 'app-add-article',
+  styleUrls:['../editArticle/editArticle.component.css'],
+  templateUrl: '../editArticle/editArticle.component.html'
 })
 
-export class EditArticleComponent {
+export class AddArticleComponent {
   
   constructor(
-    private _articlesService:ArticlesService,
-    private _activatedRoute: ActivatedRoute,
-    private _router: Router,
-    private _loginStatusService: LoginStatusService
-    ){}
+  private _articlesService:ArticlesService,
+  private _router: Router, 
+  private _loginStatusService: LoginStatusService){}
   
   @ViewChild('htmlArticleContent') htmlArticleContent;
 
   public isLogin = this._loginStatusService.getLoginStatus();
-  public articleInfo:any = {
-    md_content : ''
+  articleInfo:any = {
+    md_content : '',
+    title: ''
   };
+  
   public isTipShow = false;
-
-  // 允许textarea输入tab
+  // 显示提示框
+  showTips(){
+    this.isTipShow = true;
+    setTimeout(() => {
+      this.isTipShow = false;
+    },4000)
+  }
   textareaAllowTab(e) {
     if (e.keyCode == 9) {
         e.preventDefault();
@@ -44,53 +49,41 @@ export class EditArticleComponent {
     }
   }
 
-  // 显示提示框
-  showTips(){
-    this.isTipShow = true;
-    setTimeout(() => {
-      this.isTipShow = false;
-    },4000)
-  }
-
   ngOnInit(){
     if(!this.isLogin){
       this.showTips();
     }
-    let articleId = this._activatedRoute.snapshot.params['id'];
-    this._articlesService.getArticle(articleId)
-    .subscribe(
-      articleInfo => {
-        this.articleInfo = articleInfo;
-      },
-      error => console.log(error)
-    )
   }
 
-  // 修改提交事件
   submitArticles(){
-    // 没登录情况不可提交
     if(!this.isLogin){
       this.showTips();
-      return ;
+      return;
     }
-
-    // 获取翻译的html内容
-    this.articleInfo.content = this.htmlArticleContent.el.nativeElement.innerHTML;
-    // 更新文章的对象
-    var editArticleInfoObj = {
+    let htmlContent = this.htmlArticleContent.el.nativeElement.innerHTML;
+    let date = new Date();
+    var articleInfoObj = {
       last_mod_time: timeFormatter(new Date()),
-      content: this.articleInfo.content,
-      md_content: this.articleInfo.md_content,
-      title: this.articleInfo.title
+      creat_time: timeFormatter(new Date()),
+      num_of_collections: 0,
+      content: htmlContent,
+      title: this.articleInfo.title,
+      md_content: this.articleInfo.md_content
     }
-    this._articlesService.updateArticle(this.articleInfo.id, editArticleInfoObj)
+    this._articlesService.addArticle(articleInfoObj)
     .subscribe(
       resp => {
-        this._router.navigateByUrl('/article/' + this.articleInfo.id)
+        this._router.navigateByUrl('/');
       },
       error => {
         console.log(error);
       }
     )
   }
+
+
+
+
+
 }
+

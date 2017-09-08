@@ -1,0 +1,51 @@
+.articleDetail {
+    width: 700px;
+    margin: 0 auto;
+    padding-bottom: 300px;
+}
+
+.articleDetail .title {
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 100px;
+    text-align: center;
+}
+
+.articleDetail .markdownContent {
+    padding: 10px 0 0;
+}
+
+.articleDetail .likeBox {
+    margin-top: 100px;
+}
+
+.articleDetail .likeBox a {
+    font-size: 16px;
+    line-height: 20px;
+    padding: 8px 15px;
+    border: 1px solid #EE8876;
+    border-radius: 20px;
+    color: #EC8D7B;
+}
+
+.articleDetail .likeBox a.active {
+    background-color: #EC8D7B;
+    color: #fff;
+}
+
+.articleDetail .likeBox a i {
+    font-size: 18px;
+    line-height: 20px;
+    margin-right: 5px;
+    vertical-align: middle;
+    top: -1px;
+    font-style: normal;
+}
+
+.articleDetail .editBtn {
+    cursor: pointer;
+    padding: 0 10px;
+    font-size: 18px;
+    color: #929280;
+    border-radius: 20px;
+}

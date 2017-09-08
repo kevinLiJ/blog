@@ -1,11 +1,9 @@
 import { Component,Input } from '@angular/core';
-import { ContactService } from '../../shared/service/contact.service';
 
 @Component({
   selector: 'lists',
   templateUrl: './list.component.html',
-  styleUrls: ['./list.component.css'],
-  providers:[ContactService]
+  styleUrls: ['./list.component.css']
 })
 export class ListComponent {
   

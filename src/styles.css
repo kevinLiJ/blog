@@ -47,6 +47,10 @@ body * {
     box-sizing: border-box
 }
 
+*:focus {
+    outline: none;
+}
+
 button,
 input,
 select,
@@ -129,6 +133,24 @@ html {
 body {
     height: 100%;
     background-size: 100% 100%;
-    background-color: #f5f5d5;
     font: 12px/1 Tahoma, Helvetica, Arial, "\5b8b\4f53", sans-serif;
+}
+
+.popoverStyle .popover-content {
+    width: auto;
+    padding: 4px 10px;
+    color: #555;
+}
+
+.login-dialog {
+    width: 400px;
+}
+
+.alert {
+    width: auto;
+    z-index: 999;
+    position: absolute;
+    top: 30px;
+    left: 50%;
+    transform: translateX(-50%);
 }

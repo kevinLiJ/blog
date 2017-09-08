@@ -1,8 +1,17 @@
 <div class="editArticle clearfix">
     <div class="sidebar clearfix">
-        <textarea name="" [(ngModel)]="articleContent" (keydown)="textareaAllowTab($event)"></textarea>
+        <input name="" [(ngModel)]="articleInfo.title" placeholder="标题" />
+        <div class="optionsBox clearfix">
+            <span class="right" (click)="submitArticles()">提交</span>
+        </div>
+        <textarea name="" [(ngModel)]="articleInfo.md_content" (keydown)="textareaAllowTab($event)" placeholder="Markdown"></textarea>
     </div>
     <div class="markdownContent">
-        <markdown [data]="articleContent"></markdown>
+        <h2>{{articleInfo.title}}</h2>
+        <markdown [data]="articleInfo.md_content" #htmlArticleContent></markdown>
     </div>
 </div>
+
+<alert type="warning" *ngIf="isTipShow">
+    <strong>Warning!</strong> 您当前未登录，编辑的内容不可提交
+</alert>

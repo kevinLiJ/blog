@@ -5,7 +5,7 @@ module.exports = function(sqlStatement, data, callback) {
         host: 'localhost',
         user: 'root',
         password: '812118541',
-        database: 'myangular'
+        database: 'myblog'
     });
 
     connection.connect();

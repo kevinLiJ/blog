@@ -1,0 +1,14 @@
+<div class="articleDetail">
+    <div class="title">{{articleInfo.title}}</div>
+    <div class="clearfix">
+        <span [popover]="lastModTimeText" triggers="mouseenter:mouseleave" containerClass="popoverStyle" placement="bottom">{{articleInfo.creat_time}}</span>
+        <span class="right editBtn glyphicon glyphicon-edit" title="编辑此文" [routerLink]="['/editArticle/' + articleId]"></span>
+    </div>
+    <div class="markdownContent" [innerHTML]="articleInfo.content"></div>
+    <div class="likeBox">
+        <a [class.active]="articleInfo.num_of_collections > 0" (click)="like()">
+            <i class="glyphicon glyphicon-heart-empty"></i> 喜欢 &nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+            <i>{{articleInfo.num_of_collections}}</i>
+        </a>
+    </div>
+</div>
