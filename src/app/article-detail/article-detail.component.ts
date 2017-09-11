@@ -1,7 +1,6 @@
 import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { ActivatedRoute  } from '@angular/router';
 
-
 import { ArticlesService } from '../shared/service/articles.service';
 import { timeFormatter } from '../shared/util';
 

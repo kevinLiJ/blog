@@ -1,0 +1,15 @@
+<div class="commentBox">
+    <span [class.active]="isTextareaShow" class="glyphicon glyphicon-comment title right" title="点击评论" (click)="isTextareaShow = !isTextareaShow"></span>
+    <div *ngIf="isTextareaShow" class="clearfix">
+        <textarea name="comment" [(ngModel)]="commentObj.comment" placeholder="留下您的评论"></textarea>
+        <span class="right submitBtn" (click)="submit()">提交</span>
+    </div>
+    <div class="commentList">
+        <div class="commentsSum" *ngIf="isArticleComment">共{{comments.length}}条评论</div>
+        <div class="commentItem clearfix" *ngFor="let comment of comments; let idx = index">
+            <span class="floor">{{idx + 1}}楼</span>
+            <p class="commentContent">{{comment.comment}}</p>
+            <span class="creatTime">{{comment.creat_time}}</span>
+        </div>
+    </div>
+</div>

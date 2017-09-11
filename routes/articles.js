@@ -26,10 +26,9 @@ router.get('/', function(req, res, next) {
         next();
     })
 }, function(req, res, next) {
-    let startId = req.query.start;
-    let endId = req.query.end;
-    console.log('return articles id between' + startId + '----' + endId)
-    querySql('SELECT * FROM articles where id between ? and ?', [startId, endId], function(error, result) {
+    let startId = parseInt(req.query.start);
+    let endId = parseInt(req.query.end);
+    querySql('select * from articles limit ?,?', [startId, endId], function(error, result) {
         if (error) {
             console.log(error.message);
             res.json({ success: false, message: error.message });

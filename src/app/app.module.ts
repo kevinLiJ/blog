@@ -7,19 +7,21 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import * as ngxBootstrap from 'ngx-bootstrap';
 import { MarkdownModule } from 'angular2-markdown';
 
+// 路由
 import { rootRouterConfig } from './app.routes';
-
+//组件
 import { AppComponent } from './app.component';
-import { ListComponent } from './shared/list/list.component';
 import { HeadComponent } from './shared/head/head.component';
 import { EditArticleComponent } from './editArticle/editArticle.component';
 import { ArticleDetailComponent } from './article-detail/article-detail.component';
 import { ArticlesListComponent } from './articles-list/articles-list.component';
 import { AddArticleComponent } from './add-article/add-article.component';
-
-
+import { CommentComponent } from './shared/comment/comment.component';
+// ajax封装
 import { LoginService } from './shared/service/login.service';
 import { ArticlesService } from './shared/service/articles.service';
+import { CommentService } from './shared/service/comment.service';
+// 服务、路由拦截、管道
 import { LoginStatusService } from './shared/service/loginStatus.service';
 import { LoginGuard } from './shared/guard/can-Activate-guard';
 import { CanDeactivateGuard } from './shared/guard/can-Deactivate-guard';
@@ -31,13 +33,13 @@ let rootRouterModule:ModuleWithProviders = RouterModule.forRoot(rootRouterConfig
 @NgModule({
   declarations: [
     AppComponent,
-    ListComponent,
     HeadComponent,
     EditArticleComponent,
     ArticlesListComponent,
     TimeFormatterPipe,
     ArticleDetailComponent,
-    AddArticleComponent
+    AddArticleComponent,
+    CommentComponent
   ],
   imports: [
     BrowserModule,
@@ -52,7 +54,7 @@ let rootRouterModule:ModuleWithProviders = RouterModule.forRoot(rootRouterConfig
     ngxBootstrap.BsDropdownModule.forRoot(),
     MarkdownModule.forRoot()
   ],
-  providers: [ArticlesService, LoginService, LoginStatusService, LoginGuard, CanDeactivateGuard, EditArticleGuard],
+  providers: [ArticlesService, LoginService, CommentService, LoginStatusService, LoginGuard, CanDeactivateGuard, EditArticleGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

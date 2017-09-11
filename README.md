@@ -7,6 +7,7 @@ service/querySql 中设置连接mysql的 user和password
 项目根目录附上了contacts.sql文件
 
 ## 开发环境
+> **开发环境后台依赖于nodemon**
 `npm run start`
 前台项目: localhost:4200
 后台服务地址: localhost:4001

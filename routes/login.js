@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var querySql = require('../service/querySql');
 
-//获取所有收藏的联系人
+//登录
 router.post('/', function(req, res, next) {
     let userName = req.body.userName;
     let password = req.body.password;

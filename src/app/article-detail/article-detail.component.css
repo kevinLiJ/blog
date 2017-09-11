@@ -1,7 +1,7 @@
 .articleDetail {
     width: 700px;
     margin: 0 auto;
-    padding-bottom: 300px;
+    padding-bottom: 150px;
 }
 
 .articleDetail .title {
@@ -16,7 +16,7 @@
 }
 
 .articleDetail .likeBox {
-    margin-top: 100px;
+    margin-top: 60px;
 }
 
 .articleDetail .likeBox a {
