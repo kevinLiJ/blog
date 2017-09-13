@@ -12,7 +12,8 @@ import { AddArticleComponent } from './add-article/add-article.component';
 import { HomeComponent } from './home/home.component';
 
 export const rootRouterConfig:Routes = [
-    {path: '', component: HomeComponent},
+    // {path: '', component: HomeComponent},
+    {path: '', redirectTo: 'articleList', pathMatch:'full'},
     {path: 'addArticle', component: AddArticleComponent},
     {path: 'editArticle/:id', component: EditArticleComponent},
     {path: 'articleList', component: ArticlesListComponent},
