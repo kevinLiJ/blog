@@ -3,6 +3,7 @@ import { Router  } from '@angular/router';
 import { timeFormatter } from '../shared/util';
 import { ArticlesService } from '../shared/service/articles.service';
 import { LoginStatusService } from '../shared/service/loginStatus.service';
+import { ClassService } from '../shared/service/class.service';
 
 @Component({
   selector: 'app-add-article',
@@ -15,7 +16,9 @@ export class AddArticleComponent {
   constructor(
   private _articlesService:ArticlesService,
   private _router: Router, 
-  private _loginStatusService: LoginStatusService){}
+  private _loginStatusService: LoginStatusService,
+  private _classService: ClassService
+  ){}
   
   @ViewChild('htmlArticleContent') htmlArticleContent;
 
@@ -26,6 +29,7 @@ export class AddArticleComponent {
   };
   
   public isTipShow = false;
+  public classes:string[] = [];
   // 显示提示框
   showTips(){
     this.isTipShow = true;
@@ -53,6 +57,14 @@ export class AddArticleComponent {
     if(!this.isLogin){
       this.showTips();
     }
+    
+    // 获取class类别
+    this._classService.getclass()
+    .subscribe(
+      classes => {this.classes = classes;console.log(this.classes);
+      },
+      error => console.log(error)
+    )
   }
 
   submitArticles(){

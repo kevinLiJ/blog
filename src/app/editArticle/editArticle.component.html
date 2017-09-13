@@ -3,6 +3,10 @@
         <input name="" [(ngModel)]="articleInfo.title" placeholder="标题" />
         <div class="optionsBox clearfix">
             <span class="right" (click)="submitArticles()">提交</span>
+            <select name="class" class="right" [(ngModel)]="articleInfo.type">
+                <option value="">文章类别</option>
+                <option [value]="class.class_name" *ngFor="let class of classes">{{class.class_name}}</option>
+            </select>
         </div>
         <textarea name="" [(ngModel)]="articleInfo.md_content" (keydown)="textareaAllowTab($event)" placeholder="Markdown"></textarea>
     </div>

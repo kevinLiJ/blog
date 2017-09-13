@@ -14,13 +14,18 @@
 }
 
 .editArticle .sidebar .optionsBox {
-    /* position: absolute;
-    top: 0;
-    left: 0; */
-    /* width: 100%; */
     background-color: #ADAAAA;
     color: #6D6B6B;
     line-height: 40px;
+}
+
+.editArticle .sidebar .optionsBox select {
+    margin-top: 12px;
+    height: 25px;
+    line-height: 25px;
+    font-size: 12px;
+    border: none;
+    background-color: #F6F1F1;
 }
 
 .editArticle .sidebar .sidebarTit {

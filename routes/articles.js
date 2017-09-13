@@ -17,7 +17,10 @@ function returnContactInfoById(req, res, next) {
 // 根据分页信息返回的文章信息
 router.get('/', function(req, res, next) {
     // 查询文章总条数
-    querySql('select count(*) from articles', '', function(error, result) {
+    let sqlStatement = req.query.type === '' ?
+        'select count(*) from articles' :
+        'select count(*) from articles where type = "' + req.query.type + '"';
+    querySql(sqlStatement, '', function(error, result) {
         if (error) {
             console.log(error.message);
             res.json({ success: false, message: error.message });
@@ -28,7 +31,11 @@ router.get('/', function(req, res, next) {
 }, function(req, res, next) {
     let startId = parseInt(req.query.start);
     let endId = parseInt(req.query.end);
-    querySql('select * from articles limit ?,?', [startId, endId], function(error, result) {
+    let sqlStatement = req.query.type === '' ?
+        'select * from articles order by id desc limit ?,?' :
+        'select * from articles where type = "' + req.query.type + '" order by id desc limit ?,?';
+    console.log(sqlStatement)
+    querySql(sqlStatement, [startId, endId], function(error, result) {
         if (error) {
             console.log(error.message);
             res.json({ success: false, message: error.message });

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ArticlesService } from '../shared/service/articles.service';
+import { ClassService } from '../shared/service/class.service';
 import { TimeFormatterPipe } from '../shared/time-formatter.pipe';
 
 @Component({
@@ -10,19 +11,25 @@ import { TimeFormatterPipe } from '../shared/time-formatter.pipe';
 
 export class ArticlesListComponent implements OnInit {
 
-  constructor(private _articlesService:ArticlesService) { }
+  constructor(
+    private _articlesService: ArticlesService,
+    private _classService: ClassService
+  ) { }
 
   public articlesNumPerPage = 8;
   public totalItems: number = 0;
   public currentPage: number = 1;
   public articles:any[] = [];
+  public classes:any[] = [];
+  public currentClass:String = '';
 
   // 分页查询封装
-  getArticleList(){
-    console.log(this.currentPage)
+  getArticleList(articleClass = ''){
+    this.currentClass = articleClass;
     let paginationData = {
       start: this.articlesNumPerPage * (this.currentPage - 1),
-      end: this.articlesNumPerPage * (this.currentPage) - 1
+      end: this.articlesNumPerPage * (this.currentPage) - 1,
+      type: this.currentClass
     };
 
     this._articlesService.getArticles(paginationData)
@@ -37,6 +44,13 @@ export class ArticlesListComponent implements OnInit {
  
   ngOnInit() {
     this.getArticleList();
+    // 获取class类别
+    this._classService.getclass()
+    .subscribe(
+      classes => {this.classes = classes;console.log(this.classes);
+      },
+      error => console.log(error)
+    )
   }
 
   // pagintaion 按钮点击事件

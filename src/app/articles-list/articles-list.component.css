@@ -1,10 +1,29 @@
+.articles {
+    width: 1100px;
+    margin: 0 auto;
+}
+
+.classify {
+    width: 200px;
+    margin: 100px 100px;
+    border-top: 1px solid #D6D695;
+    border-bottom: 1px solid #D6D695;
+    padding: 10px 0;
+}
+
+.classify ul li {
+    cursor: pointer;
+    padding: 5px;
+}
+
+.classify ul li:hover {
+    text-decoration: underline;
+}
+
 .articleList {
     width: 700px;
-    margin: 0 auto;
     box-shadow: 3px 3px 6px #ccc;
-    /* height: 99%; */
     border-radius: 10px;
-    /* overflow-y: auto; */
     z-index: 1;
 }
 
@@ -14,6 +33,10 @@
     cursor: pointer;
 }
 
+.articleList .articleInfo:last-of-type {
+    border-bottom: none;
+}
+
 .articleList .articleInfo .title {
     height: 30px;
     line-height: 30px;
@@ -21,11 +44,13 @@
     font-weight: 700;
 }
 
-.articleList .articleInfo .briefInfo {
-    margin-top: 10px;
-    text-indent: 15px;
-}
-
 .articleList .articleInfo .otherInfo {
     margin-top: 10px;
+}
+
+.articleList .articleInfo .otherInfo .class {
+    border: 1px solid #aaa;
+    border-radius: 5px;
+    padding: 0 5px;
+    font-size: 12px;
 }

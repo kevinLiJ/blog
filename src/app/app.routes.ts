@@ -9,9 +9,10 @@ import { EditArticleComponent } from './editArticle/editArticle.component';
 import { ArticlesListComponent } from './articles-list/articles-list.component';
 import { ArticleDetailComponent } from './article-detail/article-detail.component';
 import { AddArticleComponent } from './add-article/add-article.component';
+import { HomeComponent } from './home/home.component';
 
 export const rootRouterConfig:Routes = [
-    {path: '', redirectTo: 'articleList', pathMatch: 'full'},
+    {path: '', component: HomeComponent},
     {path: 'addArticle', component: AddArticleComponent},
     {path: 'editArticle/:id', component: EditArticleComponent},
     {path: 'articleList', component: ArticlesListComponent},

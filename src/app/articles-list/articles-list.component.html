@@ -1,11 +1,28 @@
-<div class="articleList">
-    <div class="articleInfo" *ngFor="let article of articles" [routerLink]="['/article/' + article.id]">
-        <div class="title">{{article.title}}</div>
-        <!-- <div class="briefInfo">{{article.content}}</div> -->
-        <div class="otherInfo">
-            <span class="left">{{article.creat_time}}</span>
-            <span class="right"></span>
+<div class="articles clearfix">
+    <div class="articleList left">
+        <div class="articleInfo" *ngFor="let article of articles" [routerLink]="['/article/' + article.id]">
+            <div class="title">{{article.title}}</div>
+            <!-- <div class="briefInfo">{{article.content}}</div> -->
+            <div class="otherInfo">
+                <span class="left class">{{article.type}}</span>
+                <span class="left">&nbsp;&nbsp;&nbsp;{{article.creat_time}}</span>
+                <span class="right"></span>
+            </div>
         </div>
+        <pagination *ngIf="totalItems > articlesNumPerPage" [itemsPerPage]="articlesNumPerPage" [directionLinks]="false" [boundaryLinks]="true" [totalItems]="totalItems" (pageChanged)="pageChanged($event)"></pagination>
     </div>
-    <pagination *ngIf="totalItems > articlesNumPerPage" [itemsPerPage]="articlesNumPerPage" [directionLinks]="false" [boundaryLinks]="true" [totalItems]="totalItems" (pageChanged)="pageChanged($event)"></pagination>
+    <div class="classify right">
+        <div class="title">文章分类</div>
+        <ul>
+            <li (click)="getArticleList()">全部文章</li>
+            <li *ngFor="let class of classes" (click)="getArticleList(class.class_name)">{{class.class_name}}</li>
+        </ul>
+        <div class="title">最热文章</div>
+        <ul>
+            <li>前端</li>
+            <li>随笔</li>
+            <li>照片</li>
+            <li>music</li>
+        </ul>
+    </div>
 </div>

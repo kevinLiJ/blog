@@ -7,7 +7,8 @@ const COLLECTION_URL = '/collections';
 
 interface PaginationAjaxData{
     start: Number,
-    end: Number
+    end: Number,
+    type:String
 }
 
 interface articleInfoObj{
@@ -22,7 +23,8 @@ interface updateArticleInfoObj{
     content:string,
     md_content:string,
     last_mod_time:string,
-    title:string
+    title:string,
+    type:string
 }
 
 @Injectable()
@@ -35,7 +37,7 @@ export class ArticlesService {
 
     // 获取所有文章的信息
     getArticles(obj: PaginationAjaxData): Observable < any > {
-        return this._http.get(ARTICLES_URL + '?start=' + obj.start + '&end=' + obj.end)
+        return this._http.get(ARTICLES_URL + '?start=' + obj.start + '&end=' + obj.end + '&type=' + obj.type)
             .map(this.extractData)
             .catch(error => Observable.throw(error.message));
     }

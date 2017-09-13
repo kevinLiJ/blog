@@ -2,9 +2,9 @@ var express = require('express');
 var router = express.Router();
 var querySql = require('../service/querySql');
 
-//添加评论
+// 添加类别
 router.post('/', function(req, res, next) {
-    querySql('INSERT INTO comments SET ?', [req.body], function(error, result) {
+    querySql('INSERT INTO class SET ?', [req.body], function(error, result) {
         if (error) {
             console.log(error.message);
             res.json({ success: false, message: error.message });
@@ -12,15 +12,15 @@ router.post('/', function(req, res, next) {
         res.json({ success: true });
     })
 });
-//获取评论
-router.get('/:id', function(req, res, next) {
-    querySql('SELECT * FROM comments WHERE article_id = ?', [req.params.id], function(error, result) {
+// 获取类别
+router.get('/', function(req, res, next) {
+    querySql('SELECT * FROM class', '', function(error, result) {
         if (error) {
             console.log(error.message);
             res.json({ success: false, message: error.message });
         }
         console.log(result)
-        res.json({ success: true, result: result });
+        res.json(result);
     })
 });
 module.exports = router;

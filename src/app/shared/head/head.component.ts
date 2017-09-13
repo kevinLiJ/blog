@@ -14,7 +14,7 @@ export class HeadComponent{
   public modalRef: BsModalRef;
   private userName:string = '';
   private password:string = '';
-  private isLogin:Boolean;
+  public isLogin:Boolean;
   constructor(
     private modalService: BsModalService,
     private _loginService: LoginService,

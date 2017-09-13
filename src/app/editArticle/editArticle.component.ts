@@ -3,6 +3,7 @@ import { timeFormatter } from '../shared/util';
 import { ActivatedRoute, Router  } from '@angular/router';
 import { ArticlesService } from '../shared/service/articles.service';
 import { LoginStatusService } from '../shared/service/loginStatus.service';
+import { ClassService } from '../shared/service/class.service';
 
 @Component({
   selector: 'edit-article',
@@ -16,7 +17,8 @@ export class EditArticleComponent {
     private _articlesService:ArticlesService,
     private _activatedRoute: ActivatedRoute,
     private _router: Router,
-    private _loginStatusService: LoginStatusService
+    private _loginStatusService: LoginStatusService,
+    private _classService: ClassService
     ){}
   
   @ViewChild('htmlArticleContent') htmlArticleContent;
@@ -26,6 +28,7 @@ export class EditArticleComponent {
     md_content : ''
   };
   public isTipShow = false;
+  public classes:string[] = [];
 
   // 允许textarea输入tab
   textareaAllowTab(e) {
@@ -56,11 +59,20 @@ export class EditArticleComponent {
     if(!this.isLogin){
       this.showTips();
     }
+    // 初始化文章内容
     let articleId = this._activatedRoute.snapshot.params['id'];
     this._articlesService.getArticle(articleId)
     .subscribe(
       articleInfo => {
         this.articleInfo = articleInfo;
+        console.log(this.articleInfo.type)
+      },
+      error => console.log(error)
+    )
+    // 获取class类别
+    this._classService.getclass()
+    .subscribe(
+      classes => {this.classes = classes;console.log(this.classes);
       },
       error => console.log(error)
     )
@@ -81,7 +93,8 @@ export class EditArticleComponent {
       last_mod_time: timeFormatter(new Date()),
       content: this.articleInfo.content,
       md_content: this.articleInfo.md_content,
-      title: this.articleInfo.title
+      title: this.articleInfo.title,
+      type: this.articleInfo.type
     }
     this._articlesService.updateArticle(this.articleInfo.id, editArticleInfoObj)
     .subscribe(
