@@ -19,10 +19,7 @@
         </ul>
         <div class="title">最热文章</div>
         <ul>
-            <li>前端</li>
-            <li>随笔</li>
-            <li>照片</li>
-            <li>music</li>
+            <li *ngFor="let hotArticle of hotArticles" [routerLink]="['/article/' + hotArticle.id]">{{hotArticle.title}}</li>
         </ul>
     </div>
 </div>
