@@ -2,6 +2,11 @@
     width: 700px;
     margin: 0 auto;
     padding-bottom: 150px;
+    position: relative;
+}
+
+.articleDetail a:hover {
+    text-decoration: none;
 }
 
 .articleDetail .title {
@@ -48,4 +53,13 @@
     font-size: 18px;
     color: #929280;
     border-radius: 20px;
+}
+
+.articleDetail .toTop {
+    font-size: 30px;
+    position: fixed;
+    right: 100px;
+    bottom: 40px;
+    top: auto;
+    color: #C0C095;
 }
